@@ -1,0 +1,72 @@
+import React, { useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Spinner from '../Spinner/Spinner';
+import { mapExpressionToEmoji } from '../../helpers/emojis';
+import './Results.css';
+
+
+const moodColors = {
+  happy: '#FFD700', 
+  sad: '#1E90FF', 
+  angry: '#FF4500', 
+  surprised: '#FFA500', 
+  neutral: '#808080', 
+  disgusted: '#8B008B',
+  fearful: '#800080', 
+};
+
+const Results = ({ results, processing }) => {
+  useEffect(() => {
+    if (results && results.length > 0) {
+      const dominantExpression = results[0].expressions.asSortedArray()[0].expression;
+      document.body.style.backgroundColor = moodColors[dominantExpression] || '#FFFFFF';
+    }
+  }, [results]);
+
+  if (processing && results) {
+    return <Spinner />;
+  }
+
+  if (!processing && results && results.length > 0) {
+    return (
+      <div className="results">
+        {results.length > 1 ? (
+          <div>
+            <p>I think...</p>
+            {results.map((result, i) => (
+              <div className="results__wrapper" key={i}>
+                <div style={{ width: '300px' }}>
+                  <p>
+                    One of you is probably {result.gender}, is looking {result.expressions.asSortedArray()[0].expression} and looks around{' '}
+                    {Math.round(result.age)}
+                  </p>
+                </div>
+                <FontAwesomeIcon icon={mapExpressionToEmoji(result.expressions.asSortedArray()[0].expression)} size="4x" />
+                <FontAwesomeIcon icon={mapExpressionToEmoji(result.gender)} size="4x" />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="results__wrapper">
+            <div>
+              <p>I think...</p>
+              <p>You look {results[0].expressions.asSortedArray()[0].expression}</p>
+            </div>
+            <div className="results__emoji">
+              <FontAwesomeIcon icon={mapExpressionToEmoji(results[0].expressions.asSortedArray()[0].expression)} size="4x" />
+              <FontAwesomeIcon icon={mapExpressionToEmoji(results[0].gender)} size="4x" />
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  } else {
+    return (
+      <div className="results">
+        <Spinner />
+      </div>
+    );
+  }
+};
+
+export default Results;
