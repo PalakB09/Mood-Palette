@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Mood Palette",
+  "version": "1.0",
+  "description": "Detects mood using webcam and changes website background color.",
+  "permissions": ["activeTab","scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "libs/face-api.js", 
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["libs/face-api.js","public/models/*"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

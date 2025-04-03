@@ -4,6 +4,7 @@ import Spinner from '../Spinner/Spinner';
 import { mapExpressionToEmoji } from '../../helpers/emojis';
 import './Results.css';
 
+console.log("✅ Results.js file is running!");
 
 const moodColors = {
   happy: '#FFD700', 
@@ -17,11 +18,18 @@ const moodColors = {
 
 const Results = ({ results, processing }) => {
   useEffect(() => {
+    console.log("Results updated:", results); // ✅ Log results to check if detection is working
+    
     if (results && results.length > 0) {
       const dominantExpression = results[0].expressions.asSortedArray()[0].expression;
-      document.body.style.backgroundColor = moodColors[dominantExpression] || '#FFFFFF';
+      
+      console.log("Detected mood:", dominantExpression); // ✅ Debugging
+      console.log("Setting background color to:", moodColors[dominantExpression]); // ✅ Debugging
+      
+      document.body.style.backgroundColor = moodColors[dominantExpression] || "#FFFFFF";
     }
   }, [results]);
+  
 
   if (processing && results) {
     return <Spinner />;
