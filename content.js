@@ -85,7 +85,7 @@ const moodColors = {
     sad: '#2E8A99    ',         // Dodger Blue
     angry: '#FF4500',       // Orange Red
     surprised: '#FFB03B',   // Orange
-    neutral: '#F3F6F6',     // Gray
+    neutral: '#DBDBDB',     // Gray
     disgusted: '#8B008B',   // Dark Magenta
     fearful: '#800080'      // Purple
 };
