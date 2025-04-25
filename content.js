@@ -81,11 +81,11 @@ onDocumentReady(() => {
 
 // Define mood colors
 const moodColors = {
-    happy: '#FFD700',       // Gold
-    sad: '#1E90FF',         // Dodger Blue
+    happy: '#FFFFC5',       // Gold
+    sad: '#2E8A99    ',         // Dodger Blue
     angry: '#FF4500',       // Orange Red
-    surprised: '#FFA500',   // Orange
-    neutral: '#808080',     // Gray
+    surprised: '#FFB03B',   // Orange
+    neutral: '#F3F6F6',     // Gray
     disgusted: '#8B008B',   // Dark Magenta
     fearful: '#800080'      // Purple
 };

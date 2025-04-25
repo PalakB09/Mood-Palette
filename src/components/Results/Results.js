@@ -6,14 +6,15 @@ import './Results.css';
 
 console.log("✅ Results.js file is running!");
 
+
 const moodColors = {
-  happy: '#FFD700', 
-  sad: '#1E90FF', 
-  angry: '#FF4500', 
-  surprised: '#FFA500', 
-  neutral: '#808080', 
-  disgusted: '#8B008B',
-  fearful: '#800080', 
+  happy: '#FFFFC5',       // Gold
+  sad: '#2E8A99    ',         // Dodger Blue
+  angry: '#FF4500',       // Orange Red
+  surprised: '#FFB03B',   // Orange
+  neutral: '#F3F6F6',     // Gray
+  disgusted: '#8B008B',   // Dark Magenta
+  fearful: '#800080'      // Purple
 };
 
 const Results = ({ results, processing }) => {
